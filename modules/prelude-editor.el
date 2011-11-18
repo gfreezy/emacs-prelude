@@ -59,7 +59,8 @@
 (global-auto-revert-mode t)
 
 ;; hippie expand is dabbrev expand on steroids
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+(setq hippie-expand-try-functions-list '(yas/hippie-try-expand
+                                         try-expand-dabbrev
                                          try-expand-dabbrev-all-buffers
                                          try-expand-dabbrev-from-kill
                                          try-complete-file-name-partially
@@ -168,6 +169,9 @@
 ;; load yasnippet
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
+(add-hook 'yas/minor-mode-hook
+          (lambda () (define-key yas/minor-mode-map
+                       (kbd "TAB") 'smart-tab)))
 
 ;; dispense of trailing whitespace once and for all
 (add-hook 'before-save-hook
@@ -179,6 +183,12 @@
 
 ;; dired - reuse current buffer by pressing 'a'
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; full-ack is a front-end of ack
+(autoload 'ack-same "full-ack" nil t)
+(autoload 'ack "full-ack" nil t)
+(autoload 'ack-find-same-file "full-ack" nil t)
+(autoload 'ack-find-file "full-ack" nil t)
 
 (provide 'prelude-editor)
 
