@@ -39,7 +39,7 @@
   :group 'prelude)
 
 (defcustom prelude-use-minimalistic-ui t
-  "If set to true Prelude will dispense of most the UI that's mouse related - 
+  "If set to true Prelude will dispense of most the UI that's mouse related -
 menu bar, tool bar, etc"
   :type 'boolean
   :group 'ui)
@@ -78,8 +78,7 @@ instead of Emacs's default theme."
 (when prelude-use-smooth-scrolling
  ;; nice scrolling
  (setq scroll-margin 0
-       scroll-conservatively 100000
-       scroll-preserve-screen-position 1))
+       scroll-conservatively 100000))
 
 (when prelude-enhance-modeline
  ;; mode line settings
