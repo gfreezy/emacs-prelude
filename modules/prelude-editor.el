@@ -169,6 +169,7 @@
 ;; load yasnippet
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
 (add-hook 'yas/minor-mode-hook
           (lambda () (define-key yas/minor-mode-map
                        (kbd "TAB") 'smart-tab)))
