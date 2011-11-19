@@ -72,9 +72,13 @@
                                          try-complete-lisp-symbol))
 
 ;; smart indenting and pairing for all
-(electric-pair-mode t)
+;; (electric-pair-mode t)
 (electric-indent-mode t)
 (electric-layout-mode t)
+
+;; autopair mode to auto close braces
+(require 'autopair)
+(autopair-global-mode)
 
 ;; meaningful names for buffers with the same name
 (require 'uniquify)
@@ -113,7 +117,7 @@
       time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)") ; date format
 (add-hook 'write-file-hooks 'time-stamp) ; update when saving
 
-;; use shift + arrow keys to switch between visible buffers
+;; use super + arrow keys to switch between visible buffers
 (require 'windmove)
 (windmove-default-keybindings 'super)
 
@@ -172,6 +176,7 @@
 (yas/load-directory (concat prelude-dir "elpa/yasnippet-0.6.1/snippets/"))
 (yas/load-directory (concat prelude-vendor-dir
                             "yasnippets-rails/rails-snippets/"))
+
 (add-hook 'yas/minor-mode-hook
           (lambda () (define-key yas/minor-mode-map
                        (kbd "TAB") 'smart-tab)))
