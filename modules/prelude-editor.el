@@ -79,6 +79,17 @@
 ;; autopair mode to auto close braces
 (require 'autopair)
 (autopair-global-mode)
+;; Use paredit instead of autopair in lisp-mode
+(add-hook 'lisp-mode-hook
+          #'(lambda () (setq autopair-dont-activate t)))
+;; make autopair work with python single and triple quotes
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (push '(?' . ?')
+                    (getf autopair-extra-pairs :code))
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
 
 ;; meaningful names for buffers with the same name
 (require 'uniquify)
@@ -179,7 +190,7 @@
 
 (add-hook 'yas/minor-mode-hook
           (lambda () (define-key yas/minor-mode-map
-                       (kbd "TAB") 'smart-tab)))
+                       (kbd "<tab>") 'smart-tab)))
 
 ;; dispense of trailing whitespace once and for all
 (add-hook 'before-save-hook
@@ -197,6 +208,11 @@
 (autoload 'ack "full-ack" nil t)
 (autoload 'ack-find-same-file "full-ack" nil t)
 (autoload 'ack-find-file "full-ack" nil t)
+
+;; Anything for selecting anything
+(setq anything-command-map-prefix-key "<f9>")
+(require 'anything-match-plugin)
+(require 'anything-config)
 
 (provide 'prelude-editor)
 

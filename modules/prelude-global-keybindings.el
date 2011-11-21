@@ -60,7 +60,7 @@
   (global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
 
   ;; File finding
-  (global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
+  (global-set-key (kbd "C-x f") 'anything-recentf)
   (global-set-key (kbd "C-c r") 'bury-buffer)
   (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
 
@@ -122,6 +122,12 @@
 
   ;; replace buffer-menu with ibuffer
   (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+  ;; replace ido-switch-buffer with anything-mini
+  (global-set-key (kbd "C-x b") 'anything-mini)
+
+  ;; anything-imenu
+  (global-set-key (kbd "C-x C-i") 'anything-imenu)
 
   ;; swap windows
   (global-set-key (kbd "C-c s") 'prelude-swap-windows)

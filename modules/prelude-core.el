@@ -458,7 +458,7 @@ there's a region, all lines that region covers will be duplicated."
                    (region-end))
     (indent-for-tab-command)))
 
-(global-set-key (kbd "TAB") 'smart-tab)
+(global-set-key (kbd "<tab>") 'smart-tab)
 
 (defun my-comment-dwim-line (&optional arg)
   "When no active selection and not at the end of line, comment or uncomment current line; append a comment when at the end of line"
@@ -471,6 +471,31 @@ there's a region, all lines that region covers will be duplicated."
     (comment-dwim arg)))
 
 (global-set-key (kbd "M-;") 'my-comment-dwim-line)
+
+(defun run-current-file ()
+  "Execute or compile the current file. For example, if the current buffer is the file x.pl, then it'll call “perl x.pl” in a shell. The file can be php, perl, python, ruby, javascript, bash, ocaml, vb, elisp. File suffix is used to determine what program to run."
+  (interactive)
+  (let (suffixMap fname suffix progName cmdStr)
+    ;; a keyed list of file suffix to comand-line program path/name
+    (setq suffixMap '(("php" . "php")
+                      ("pl" . "perl")
+                      ("py" . "python")
+                      ("rb" . "ruby")
+                      ("js" . "js")
+                      ("sh" . "bash")
+                      ("ml" . "ocaml")
+                      ("vbs" . "cscript")))
+    (setq fname (buffer-file-name))
+    (setq suffix (file-name-extension fname))
+    (setq progName (cdr (assoc suffix suffixMap)))
+    (setq cmdStr (concat progName " \"" fname "\""))
+    (if (string-equal suffix "el") ; special case for emacs lisp
+        (load-file fname)
+      (if progName (progn (message "Running...")
+                          (shell-command cmdStr "*run-current-file output*" ))
+        (message "No recognized program file suffix for this file.")))))
+
+(global-set-key (kbd "<f5>") 'run-current-file)
 
 (provide 'prelude-core)
 ;;; prelude-core.el ends here
