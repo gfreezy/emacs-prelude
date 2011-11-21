@@ -57,12 +57,7 @@
   (define-key global-map (kbd "C--") 'text-scale-decrease)
 
   ;; Jump to a definition in the current file. (This is awesome.)
-  (global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
-
-  ;; File finding
-  (global-set-key (kbd "C-x f") 'anything-recentf)
-  (global-set-key (kbd "C-c r") 'bury-buffer)
-  (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
+  ;; (global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
 
   ;; Window switching. (C-x o goes to the next window)
   (global-set-key (kbd "C-x O") (lambda ()
@@ -85,10 +80,7 @@
   ;; Start a regular shell if you prefer that.
   (global-set-key (kbd "C-x M-m") 'shell)
 
-  ;; If you want to be able to M-x without meta
-  ;;  (global-set-key (kbd "C-x C-m") 'execute-extended-command)
-
-  ;; Fetch the contents at a URL, display it raw.
+   ;; Fetch the contents at a URL, display it raw.
   (global-set-key (kbd "C-x C-h") 'prelude-view-url)
 
   ;; A complementary binding to the apropos-command(C-h a)
@@ -114,20 +106,9 @@
   ;; use hippie-expand instead of dabbrev
   (global-set-key (kbd "M-/") 'hippie-expand)
 
-  ;; spell check Bulgarian text
-  (global-set-key (kbd "C-c B")
-                  (lambda()(interactive)
-                    (ispell-change-dictionary "bulgarian")
-                    (flyspell-buffer)))
-
   ;; replace buffer-menu with ibuffer
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-  ;; replace ido-switch-buffer with anything-mini
-  (global-set-key (kbd "C-x b") 'anything-mini)
-
-  ;; anything-imenu
-  (global-set-key (kbd "C-x C-i") 'anything-imenu)
 
   ;; swap windows
   (global-set-key (kbd "C-c s") 'prelude-swap-windows)
@@ -135,14 +116,20 @@
   ;; duplicate the current line or region
   (global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
 
+  ;; run current file according to the file type
+  (global-set-key (kbd "<f5>") 'run-current-file)
+
+  ;; comment/uncomment current line when no active selection
+  (global-set-key (kbd "M-;") 'my-comment-dwim-line)
+
+  ;; SuperTab link in Vim
+  (global-set-key (kbd "<tab>") 'smart-tab)
+
   ;; rename buffer & visited file
   (global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
 
   ;; open an ansi-term buffer
   (global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
-
-  ;; toggle input method
-  (global-set-key (kbd "C-\\") 'prelude-toggle-bulgarian-input-method)
 
   ;; search with google
   (global-set-key (kbd "C-c g") 'prelude-google)
