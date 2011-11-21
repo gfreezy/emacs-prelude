@@ -210,7 +210,8 @@
 (autoload 'ack-find-file "full-ack" nil t)
 
 ;; Anything for selecting anything
-(setq anything-command-map-prefix-key "<f9>")
+(global-unset-key (kbd "<f10>"))
+(setq anything-command-map-prefix-key "<f10>")
 (require 'anything-match-plugin)
 (require 'anything-config)
 
