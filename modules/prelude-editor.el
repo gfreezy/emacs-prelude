@@ -258,6 +258,11 @@
 ;; find files in current git project
 (global-set-key (kbd "C-x f") 'anything-find-in-git)
 
+;; recover session when open emacs again
+(require 'desktop-recover)
+(desktop-recover-interactive)
+
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
