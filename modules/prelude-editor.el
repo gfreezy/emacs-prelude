@@ -217,12 +217,21 @@
 ;; replace ido-switch-buffer with anything-mini
 (global-set-key (kbd "C-x C-c") 'anything-mini)
 
+(defun find-git-repo (dir)
+  "Find base git directory"
+  (if (string= "/" dir)
+      (message "not in a git repo.")
+    (if (file-exists-p (expand-file-name ".git/" dir))
+        dir
+      (find-git-repo (expand-file-name "../" dir)))))
+
+
 ;; anything-imenu to find symbols
 (global-set-key (kbd "M-i") 'anything-imenu)
 
 ;; search files in current git project
-(require 'git-find-file)
-(global-set-key (kbd "C-x f") 'gffip)
+(require 'anything-git-find-file)
+(global-set-key (kbd "C-x f") 'anything-git-find-file)
 
 (provide 'prelude-editor)
 
