@@ -10,3 +10,5 @@ url
 personal/*.el
 *.elc
 anything-c-adaptive-history
+.emacs.desktop
+session.*
