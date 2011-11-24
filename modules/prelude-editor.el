@@ -192,9 +192,8 @@
           (lambda () (define-key yas/minor-mode-map
                        (kbd "<tab>") 'smart-tab)))
 
-;; dispense of trailing whitespace once and for all
-(add-hook 'before-save-hook
-          'delete-trailing-whitespace)
+;; keep the whitespace decent all the time
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; projectile is a project management mode
 (require 'projectile)

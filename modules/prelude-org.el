@@ -1,4 +1,4 @@
-;;; prelude-python.el --- Emacs Prelude: python.el configuration.
+;;; prelude-org.el --- Emacs Prelude: org-mode configuration.
 ;;
 ;; Copyright (c) 2011 Bozhidar Batsov
 ;;
@@ -11,8 +11,7 @@
 
 ;;; Commentary:
 
-;; Some basic configuration for python.el (the latest and greatest
-;; Python mode Emacs has to offer).
+;; Some basic configuration for org-mode.
 
 ;;; License:
 
@@ -33,26 +32,16 @@
 
 ;;; Code:
 
-;; customize
-(defgroup python nil
-  "Emacs Prelude C programming support"
-  :group 'prelude)
+(add-to-list 'auto-mode-alist '("\\.org\\’" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
-(defcustom prelude-enable-python-hook t
-  "Enable Prelude's default Python hook."
-  :type 'boolean
-  :group 'python)
-
-(require 'python)
-
-(defun prelude-python-coding-hook ()
+(defun prelude-org-mode-hook ()
   (electric-indent-mode -1))
 
-(when prelude-enable-python-hook
-  (add-hook 'python-mode-hook 'prelude-python-coding-hook))
+(add-hook 'org-mode-hook 'prelude-org-mode-hook)
 
-(setq python-check-command "pyflakes")
+(provide 'prelude-org)
 
-(provide 'prelude-python)
-
-;;; prelude-python.el ends here
+;;; prelude-org.el ends here
