@@ -123,7 +123,7 @@
   (global-set-key (kbd "M-;") 'my-comment-dwim-line)
 
   ;; SuperTab link in Vim
-  (global-set-key (kbd "<tab>") 'smart-tab)
+  (global-set-key (kbd "TAB") 'smart-tab)
 
   ;; rename buffer & visited file
   (global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
