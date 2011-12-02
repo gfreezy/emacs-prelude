@@ -30,13 +30,6 @@
 ;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ;; Boston, MA 02110-1301, USA.
 
-;;; Code:
-
-;; customize
-(defgroup editor nil
-  "Emacs Prelude Editor enhancements"
-  :group 'prelude)
-
 ;; Emacs users obviously have little need for Command and Option keys,
 ;; but they do need Meta and Super
 (when (eq system-type 'darwin)
@@ -79,9 +72,11 @@
 ;; autopair mode to auto close braces
 (require 'autopair)
 (autopair-global-mode)
+
 ;; Use paredit instead of autopair in lisp-mode
 (add-hook 'lisp-mode-hook
           #'(lambda () (setq autopair-dont-activate t)))
+
 ;; make autopair work with python single and triple quotes
 (add-hook 'python-mode-hook
           #'(lambda ()
@@ -115,10 +110,10 @@
 (savehist-mode t)
 
 ;; save recent files
-(setq recentf-save-file (concat user-emacs-directory "recentf")
-      recentf-max-saved-items 200
-      recentf-max-menu-items 15)
-(recentf-mode t)
+;; (setq recentf-save-file (concat user-emacs-directory "recentf")
+;;       recentf-max-saved-items 200
+;;       recentf-max-menu-items 15)
+;; (recentf-mode t)
 
 ;; time-stamps
 ;; when there's "Time-stamp: <>" in the first 10 lines of the file
@@ -140,9 +135,9 @@
 (global-hl-line-mode +1)
 
 ;; tramp, for sudo access
-(require 'tramp)
+;; (require 'tramp)
 ;; keep in mind known issues with zsh - see emacs wiki
-(setq tramp-default-method "ssh")
+;; (setq tramp-default-method "ssh")
 
 ;; ido-mode
 (ido-mode t)
@@ -154,9 +149,7 @@
       ido-default-file-method 'selected-window)
 
 ;; auto-completion in minibuffer
-(icomplete-mode +1)
-
-(set-default 'imenu-auto-rescan t)
+;; (icomplete-mode +1)
 
 ;; flyspell-mode does spell-checking on the fly as you type
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
@@ -213,25 +206,24 @@
 (global-unset-key (kbd "<f10>"))
 (setq anything-command-map-prefix-key "<f10>")
 (require 'anything-config)
+(setq anything-c-adaptive-history-length 10000)
 
-;; replace ido-switch-buffer with anything-mini
+;; switch buffers with anything
 (global-set-key (kbd "C-x C-c") 'anything-mini)
+(global-set-key (kbd "C-x b") 'anything-buffers+)
 
-(defun find-git-repo (dir)
-  "Find base git directory"
-  (if (string= "/" dir)
-      (message "not in a git repo.")
-    (if (file-exists-p (expand-file-name ".git/" dir))
-        dir
-      (find-git-repo (expand-file-name "../" dir)))))
-
-
-;; anything-imenu to find symbols
-(global-set-key (kbd "M-i") 'anything-imenu)
+;; execute emacs commands
+(global-set-key (kbd "M-x") 'anything-M-x)
 
 ;; search files in current git project
 (require 'anything-git-find-file)
 (global-set-key (kbd "C-x f") 'anything-git-find-file)
+
+;; anything-imenu to find symbols
+(global-set-key (kbd "M-i") 'anything-imenu)
+
+;; view kill ring with anything
+(global-set-key (kbd "M-y") 'anything-show-kill-ring)
 
 (provide 'prelude-editor)
 

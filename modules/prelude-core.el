@@ -244,54 +244,6 @@ there's a region, all lines that region covers will be duplicated."
     (cond ((search-forward "<?xml" nil t) (xml-mode))
           ((search-forward "<html" nil t) (html-mode)))))
 
-(defun prelude-ido-goto-symbol (&optional symbol-list)
-  "Refresh imenu and jump to a place in the buffer using Ido."
-  (interactive)
-  (unless (featurep 'imenu)
-    (require 'imenu nil t))
-  (cond
-   ((not symbol-list)
-    (let ((ido-mode ido-mode)
-          (ido-enable-flex-matching
-           (if (boundp 'ido-enable-flex-matching)
-               ido-enable-flex-matching t))
-          name-and-pos symbol-names position)
-      (unless ido-mode
-        (ido-mode 1)
-        (setq ido-enable-flex-matching t))
-      (while (progn
-               (imenu--cleanup)
-               (setq imenu--index-alist nil)
-               (prelude-ido-goto-symbol (imenu--make-index-alist))
-               (setq selected-symbol
-                     (ido-completing-read "Symbol? " symbol-names))
-               (string= (car imenu--rescan-item) selected-symbol)))
-      (unless (and (boundp 'mark-active) mark-active)
-        (push-mark nil t nil))
-      (setq position (cdr (assoc selected-symbol name-and-pos)))
-      (cond
-       ((overlayp position)
-        (goto-char (overlay-start position)))
-       (t
-        (goto-char position)))))
-   ((listp symbol-list)
-    (dolist (symbol symbol-list)
-      (let (name position)
-        (cond
-         ((and (listp symbol) (imenu--subalist-p symbol))
-          (prelude-ido-goto-symbol symbol))
-         ((listp symbol)
-          (setq name (car symbol))
-          (setq position (cdr symbol)))
-         ((stringp symbol)
-          (setq name symbol)
-          (setq position
-                (get-text-property 1 'org-imenu-marker symbol))))
-        (unless (or (null position) (null name)
-                    (string= (car imenu--rescan-item) name))
-          (add-to-list 'symbol-names name)
-          (add-to-list 'name-and-pos (cons name position))))))))
-
 ;; We have a number of turn-on-* functions since it's advised that lambda
 ;; functions not go in hooks. Repeatedly evaluating an add-to-list with a
 ;; hook value will repeatedly add it since there's no way to ensure
@@ -320,7 +272,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (defun prelude-coding-hook ()
   "Default coding hook, useful with any programming language."
-  (flyspell-prog-mode)
+  ;; (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
   (prelude-turn-on-abbrev)
@@ -393,12 +345,12 @@ there's a region, all lines that region covers will be duplicated."
 
 (add-hook 'minibuffer-setup-hook 'prelude-conditionally-enable-paredit-mode)
 
-(defun prelude-recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
+;; (defun prelude-recentf-ido-find-file ()
+;;   "Find a recent file using ido."
+;;   (interactive)
+;;   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+;;     (when file
+;;       (find-file file))))
 
 (defun prelude-swap-windows ()
   "If you have 2 windows, it swaps them."
@@ -453,6 +405,8 @@ there's a region, all lines that region covers will be duplicated."
                    (region-end))
     (indent-for-tab-command)))
 
+(global-set-key (kbd "TAB") 'smart-indent)
+
 (defun my-comment-dwim-line (&optional arg)
   "When no active selection and not at the end of line, comment or uncomment current line; append a comment when at the end of line"
   (interactive "*P")
@@ -462,6 +416,8 @@ there's a region, all lines that region covers will be duplicated."
        (line-beginning-position)
        (line-end-position))
     (comment-dwim arg)))
+
+(global-set-key (kbd "M-;") 'my-comment-dwim-line)
 
 (defun run-current-file ()
   "Execute or compile the current file. For example, if the current buffer is the file x.pl, then it'll call “perl x.pl” in a shell. The file can be php, perl, python, ruby, javascript, bash, ocaml, vb, elisp. File suffix is used to determine what program to run."
@@ -485,6 +441,8 @@ there's a region, all lines that region covers will be duplicated."
       (if progName (progn (message "Running...")
                           (shell-command cmdStr "*run-current-file output*" ))
         (message "No recognized program file suffix for this file.")))))
+
+(global-set-key (kbd "<f5>") 'run-current-file)
 
 (provide 'prelude-core)
 ;;; prelude-core.el ends here

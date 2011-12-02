@@ -45,18 +45,11 @@
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-;; Jump to a definition in the current file. (This is awesome.)
-;; (global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
-
-;; File finding
-;; (global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
-(global-set-key (kbd "C-c r") 'bury-buffer)
-(global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
-
 ;; Window switching. (C-x o goes to the next window)
 (global-set-key (kbd "C-x O") (lambda ()
                                 (interactive)
                                 (other-window -1))) ;; back one
+(global-set-key (kbd "C-;") 'other-window)
 
 ;; Indentation help
 (global-set-key (kbd "C-x ^") 'join-line)
@@ -75,7 +68,7 @@
 (global-set-key (kbd "C-x M-m") 'shell)
 
 ;; If you want to be able to M-x without meta
-;; (global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; Fetch the contents at a URL, display it raw.
 (global-set-key (kbd "C-x C-h") 'prelude-view-url)
@@ -118,9 +111,6 @@
 ;; open an ansi-term buffer
 (global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
 
-;; toggle input method
-(global-set-key (kbd "C-\\") 'prelude-toggle-bulgarian-input-method)
-
 ;; search with google
 (global-set-key (kbd "C-c g") 'prelude-google)
 
@@ -129,6 +119,10 @@
 
 ;; toggle menu-bar visibility
 (global-set-key (kbd "<f12>") 'menu-bar-mode)
+
+;; auto ident when insert a newline
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-j") 'newline)
 
 (provide 'prelude-global-keybindings)
 

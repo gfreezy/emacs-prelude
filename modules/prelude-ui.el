@@ -50,13 +50,15 @@
 
 ;; nice scrolling
 (setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
+      scroll-conservatively 100000)
 
 ;; mode line settings
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
+
+;; delete all space in one key press
+(setq c-hungry-delete-key t)
 
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
