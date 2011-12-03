@@ -12,3 +12,4 @@ personal/*.el
 anything-c-adaptive-history
 .emacs.desktop
 session.*
+ac-comphist.dat
