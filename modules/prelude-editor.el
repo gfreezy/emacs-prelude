@@ -233,9 +233,30 @@
 (require 'hungry-delete)
 (add-hook 'text-mode-hook 'turn-on-hungry-delete-mode)
 
-;; smart-tab
-;;(require 'smart-tab)
-;;(global-smart-tab-mode 1)
+;; auto-complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories
+             (concat prelude-vendor-dir "auto-complete/dict"))
+(ac-config-default)
+(set-default 'ac-sources
+             '(ac-source-filename
+               ac-source-yasnippet
+               ac-source-abbrev
+               ac-source-dictionary
+               ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers))
+;; completion menu is disrupted
+(setq popup-use-optimized-column-computation nil)
+;; menu height
+(setq ac-menu-height 8)
+;; smart case
+(setq ac-ignore-case 'smart)
+;; delaying processes of flyspell-mode disables auto completion
+(ac-flyspell-workaround)
+;; rebind keys to navigate menu
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
 
 (provide 'prelude-editor)
 
