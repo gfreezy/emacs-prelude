@@ -67,7 +67,7 @@
 (load-theme 'zenburn t)
 
 ;; use text-mode instead
-(setq default-major-mode 'text-mode)
+(setq major-mode 'text-mode)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here

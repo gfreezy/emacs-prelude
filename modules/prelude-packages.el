@@ -46,7 +46,7 @@
   '(auctex clojure-mode coffee-mode deft gist haml-mode
                  haskell-mode magit markdown-mode paredit projectile
                  sass-mode scss-mode yaml-mode yari yasnippet
-                 python-mode autopair anything anything-config
+                 python autopair anything anything-config
                  anything-match-plugin)
   "A list of packages to ensure are installed at launch.")
 
