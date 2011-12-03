@@ -107,7 +107,7 @@ the curson at its beginning, according to the current mode."
   (interactive)
   (move-end-of-line nil)
   (open-line 1)
-  (next-line 1)
+  (forward-line 1)
   (indent-according-to-mode))
 
 ;; mimic popular IDEs binding, note that it doesn't work in a terminal session
@@ -117,16 +117,16 @@ the curson at its beginning, according to the current mode."
   "Move up the current line."
   (interactive)
   (transpose-lines 1)
-  (previous-line 2))
+  (forward-line -2))
 
 (global-set-key [(control shift up)] 'prelude-move-line-up)
 
 (defun prelude-move-line-down ()
   "Move down the current line."
   (interactive)
-  (next-line 1)
+  (forward-line 1)
   (transpose-lines 1)
-  (previous-line 1))
+  (forward-line -1))
 
 (global-set-key [(control shift down)] 'prelude-move-line-down)
 
@@ -272,7 +272,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (defun prelude-coding-hook ()
   "Default coding hook, useful with any programming language."
-  ;; (flyspell-prog-mode)
+  (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
   (prelude-turn-on-abbrev)
@@ -368,44 +368,6 @@ there's a region, all lines that region covers will be duplicated."
       (set-window-start w1 s2)
       (set-window-start w2 s1)))
   (other-window 1))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Smart Tab
-;; Borrowed from snippets at
-;; http://www.emacswiki.org/emacs/TabCompletion
-;; TODO: Take a look at https://github.com/genehack/smart-tab
-(defvar smart-tab-using-hippie-expand t
-  "turn this on if you want to use hippie-expand completion.")
-
-(defun smart-tab (prefix)
-  "Needs `transient-mark-mode' to be on. This smart tab is
-  minibuffer compliant: it acts as usual in the minibuffer.
-
-  In all other buffers: if PREFIX is \\[universal-argument], calls
-  `smart-indent'. Else if point is at the end of a symbol,
-  expands it. Else calls `smart-indent'."
-  (interactive "P")
-  (labels ((smart-tab-must-expand (&optional prefix)
-                                  (unless (or (consp prefix)
-                                              mark-active)
-                                    (looking-at "\\_>"))))
-    (cond ((minibufferp)
-           (minibuffer-complete))
-          ((smart-tab-must-expand prefix)
-           (if smart-tab-using-hippie-expand
-               (hippie-expand prefix)
-             (dabbrev-expand prefix)))
-          ((smart-indent)))))
-
-(defun smart-indent ()
-  "Indents region if mark is active, or current line otherwise."
-  (interactive)
-  (if mark-active
-    (indent-region (region-beginning)
-                   (region-end))
-    (indent-for-tab-command)))
-
-(global-set-key (kbd "TAB") 'smart-indent)
 
 (defun my-comment-dwim-line (&optional arg)
   "When no active selection and not at the end of line, comment or uncomment current line; append a comment when at the end of line"

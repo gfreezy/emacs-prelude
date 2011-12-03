@@ -1,3 +1,12 @@
 [submodule "vendor/yasnippets-rails"]
 	path = vendor/yasnippets-rails
 	url = https://github.com/eschulte/yasnippets-rails.git
+[submodule "vendor/zencoding"]
+	path = vendor/zencoding
+	url = git://github.com/rooney/zencoding.git
+[submodule "vendor/hungry-delete"]
+	path = vendor/hungry-delete
+	url = git://github.com/nflath/hungry-delete.git
+[submodule "vendor/smart-tab"]
+	path = vendor/smart-tab
+	url = git://github.com/genehack/smart-tab.git

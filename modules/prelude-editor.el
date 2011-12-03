@@ -110,10 +110,10 @@
 (savehist-mode t)
 
 ;; save recent files
-;; (setq recentf-save-file (concat user-emacs-directory "recentf")
-;;       recentf-max-saved-items 200
-;;       recentf-max-menu-items 15)
-;; (recentf-mode t)
+(setq recentf-save-file (concat user-emacs-directory "recentf")
+      recentf-max-saved-items 200
+      recentf-max-menu-items 15)
+(recentf-mode t)
 
 ;; time-stamps
 ;; when there's "Time-stamp: <>" in the first 10 lines of the file
@@ -135,9 +135,9 @@
 (global-hl-line-mode +1)
 
 ;; tramp, for sudo access
-;; (require 'tramp)
+(require 'tramp)
 ;; keep in mind known issues with zsh - see emacs wiki
-;; (setq tramp-default-method "ssh")
+(setq tramp-default-method "ssh")
 
 ;; ido-mode
 (ido-mode t)
@@ -146,10 +146,13 @@
       ido-create-new-buffer 'always
       ido-use-filename-at-point 'guess
       ido-max-prospects 10
-      ido-default-file-method 'selected-window)
+      ido-default-file-method 'selected-window
+      ido-auto-merge-delay-time 10)
 
-;; auto-completion in minibuffer
-;; (icomplete-mode +1)
+;; smex for executing command
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
 
 ;; flyspell-mode does spell-checking on the fly as you type
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
@@ -181,9 +184,9 @@
 (yas/load-directory (concat prelude-vendor-dir
                             "yasnippets-rails/rails-snippets/"))
 
-(add-hook 'yas/minor-mode-hook
-          (lambda () (define-key yas/minor-mode-map
-                       (kbd "<tab>") 'smart-tab)))
+;; (add-hook 'yas/minor-mode-hook
+;;           (lambda () (define-key yas/minor-mode-map
+;;                        (kbd "<tab>") 'smart-tab)))
 
 ;; keep the whitespace decent all the time
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -212,9 +215,6 @@
 (global-set-key (kbd "C-x C-c") 'anything-mini)
 (global-set-key (kbd "C-x b") 'anything-buffers+)
 
-;; execute emacs commands
-(global-set-key (kbd "M-x") 'anything-M-x)
-
 ;; search files in current git project
 (require 'anything-git-find-file)
 (global-set-key (kbd "C-x f") 'anything-git-find-file)
@@ -224,6 +224,18 @@
 
 ;; view kill ring with anything
 (global-set-key (kbd "M-y") 'anything-show-kill-ring)
+
+;; zencoding
+(require 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'zencoding-mode)
+
+;; hungry delete space
+(require 'hungry-delete)
+(add-hook 'text-mode-hook 'turn-on-hungry-delete-mode)
+
+;; smart-tab
+;;(require 'smart-tab)
+;;(global-smart-tab-mode 1)
 
 (provide 'prelude-editor)
 

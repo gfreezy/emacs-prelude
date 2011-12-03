@@ -46,7 +46,8 @@
   '(auctex clojure-mode coffee-mode deft gist haml-mode
                  haskell-mode magit markdown-mode paredit projectile
                  sass-mode scss-mode yaml-mode yari yasnippet
-                 python anything anything-config anything-match-plugin)
+                 python-mode autopair anything anything-config
+                 anything-match-plugin)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p prelude-packages)

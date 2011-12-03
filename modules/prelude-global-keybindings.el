@@ -49,7 +49,6 @@
 (global-set-key (kbd "C-x O") (lambda ()
                                 (interactive)
                                 (other-window -1))) ;; back one
-(global-set-key (kbd "C-;") 'other-window)
 
 ;; Indentation help
 (global-set-key (kbd "C-x ^") 'join-line)

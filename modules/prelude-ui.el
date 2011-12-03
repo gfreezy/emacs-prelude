@@ -57,9 +57,6 @@
 (column-number-mode t)
 (size-indication-mode t)
 
-;; delete all space in one key press
-(setq c-hungry-delete-key t)
-
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -68,6 +65,9 @@
 
 ;; use zenburn as the default theme
 (load-theme 'zenburn t)
+
+;; use text-mode instead
+(setq default-major-mode 'text-mode)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here
