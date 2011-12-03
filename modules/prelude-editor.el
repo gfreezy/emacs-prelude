@@ -52,8 +52,7 @@
 (global-auto-revert-mode t)
 
 ;; hippie expand is dabbrev expand on steroids
-(setq hippie-expand-try-functions-list '(yas/hippie-try-expand
-                                         try-expand-dabbrev
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
                                          try-expand-dabbrev-all-buffers
                                          try-expand-dabbrev-from-kill
                                          try-complete-file-name-partially
@@ -183,10 +182,6 @@
 (yas/load-directory (concat prelude-dir "elpa/yasnippet-0.6.1/snippets/"))
 (yas/load-directory (concat prelude-vendor-dir
                             "yasnippets-rails/rails-snippets/"))
-
-;; (add-hook 'yas/minor-mode-hook
-;;           (lambda () (define-key yas/minor-mode-map
-;;                        (kbd "<tab>") 'smart-tab)))
 
 ;; projectile is a project management mode
 (require 'projectile)

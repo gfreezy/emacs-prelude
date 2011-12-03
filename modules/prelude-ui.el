@@ -64,7 +64,8 @@
 (add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 
 ;; use zenburn as the default theme
-(load-theme 'zenburn t)
+;; (load-theme 'zenburn t)
+(load-theme 'solarized-dark t)
 
 ;; use text-mode instead
 (setq major-mode 'text-mode)
