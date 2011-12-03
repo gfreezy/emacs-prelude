@@ -181,7 +181,9 @@
 (yas/initialize)
 (yas/load-directory (concat prelude-dir "elpa/yasnippet-0.6.1/snippets/"))
 (yas/load-directory (concat prelude-vendor-dir
-                            "yasnippets-rails/rails-snippets/"))
+                            "snippets/yasnippets-rails/rails-snippets/"))
+(yas/load-directory (concat prelude-vendor-dir
+                            "snippets/yasnippets-haskell"))
 
 ;; projectile is a project management mode
 (require 'projectile)
