@@ -178,7 +178,7 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; load yasnippet
-(require 'yasnippet) ;; not yasnippet-bundle
+(require 'yasnippet)
 (yas/initialize)
 (yas/load-directory (concat prelude-dir "elpa/yasnippet-0.6.1/snippets/"))
 (yas/load-directory (concat prelude-vendor-dir
@@ -187,9 +187,6 @@
 ;; (add-hook 'yas/minor-mode-hook
 ;;           (lambda () (define-key yas/minor-mode-map
 ;;                        (kbd "<tab>") 'smart-tab)))
-
-;; keep the whitespace decent all the time
-(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; projectile is a project management mode
 (require 'projectile)
