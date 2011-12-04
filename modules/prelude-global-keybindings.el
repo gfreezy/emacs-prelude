@@ -86,6 +86,9 @@
                  isearch-string
                (regexp-quote isearch-string))))))
 
+;; Magit rules
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; cycle through buffers
 (global-set-key (kbd "<C-tab>") 'bury-buffer)
 
