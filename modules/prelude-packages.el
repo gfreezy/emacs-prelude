@@ -44,11 +44,13 @@
 ;; TODO find a way to get inf-ruby 2.2.2 into Marmalade
 (defvar prelude-packages
   '(auctex clojure-mode coffee-mode deft gist haml-mode
-                 haskell-mode magit markdown-mode paredit projectile
-                 sass-mode scss-mode yaml-mode yari yasnippet
-                 python autopair anything anything-config
-                 anything-match-plugin)
-  "A list of packages to ensure are installed at launch.")
+           haskell-mode magit markdown-mode paredit projectile
+           python sass-mode scss-mode solarized-theme yaml-mode yari
+           zenburn-theme yasnippet
+           python autopair anything anything-config
+           anything-match-plugin))
+
+"A list of packages to ensure are installed at launch.")
 
 (dolist (p prelude-packages)
   (when (not (package-installed-p p))

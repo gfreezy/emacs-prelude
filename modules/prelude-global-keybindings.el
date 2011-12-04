@@ -78,9 +78,6 @@
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'prelude-eval-and-replace)
 
-;; Magit rules!
-(global-set-key (kbd "C-x g") 'magit-status)
-
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)
