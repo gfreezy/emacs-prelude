@@ -70,5 +70,14 @@
 ;; use text-mode instead
 (setq major-mode 'text-mode)
 
+;; use utf-8 environment in default
+(set-language-environment 'UTF-8)
+(set-locale-environment "UTF-8")
+
+;; set English and Chinese fonts
+(set-default-font "Inconsolata-12")
+(set-fontset-font "fontset-default" 'unicode
+                  '("LiHei Pro" . "unicode-ttf"))
+
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here

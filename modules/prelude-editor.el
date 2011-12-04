@@ -225,7 +225,7 @@
 
 ;; hungry delete space
 (require 'hungry-delete)
-(add-hook 'text-mode-hook 'turn-on-hungry-delete-mode)
+(global-hungry-delete-mode)
 
 ;; auto-complete
 (require 'auto-complete-config)

@@ -123,6 +123,9 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-j") 'newline)
 
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "<f4>") 'delete-other-windows)
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here
