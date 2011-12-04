@@ -1,0 +1,15 @@
+[submodule "vendor/auto-complete"]
+	path = vendor/auto-complete
+	url = git://github.com/m2ym/auto-complete.git
+[submodule "vendor/hungry-delete"]
+	path = vendor/hungry-delete
+	url = git://github.com/nflath/hungry-delete.git
+[submodule "vendor/zencoding"]
+	path = vendor/zencoding
+	url = git://github.com/rooney/zencoding.git
+[submodule "vendor/snippets/yasnippets-rails"]
+	path = vendor/snippets/yasnippets-rails
+	url = git://github.com/eschulte/yasnippets-rails.git
+[submodule "vendor/snippets/yasnippets-haskell/haskell-mode"]
+	path = vendor/snippets/yasnippets-haskell/haskell-mode
+    url = git://github.com/polypus74/HSnippets.git
