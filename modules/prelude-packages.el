@@ -46,11 +46,10 @@
   '(auctex clojure-mode coffee-mode deft gist haml-mode
            haskell-mode magit markdown-mode paredit projectile
            python sass-mode scss-mode solarized-theme yaml-mode yari
-           zenburn-theme yasnippet
-           python autopair anything anything-config
-           anything-match-plugin))
-
-"A list of packages to ensure are installed at launch.")
+           zenburn-theme yasnippet autopair anything anything-config
+           anything-match-plugin)
+  
+  "A list of packages to ensure are installed at launch.")
 
 (dolist (p prelude-packages)
   (when (not (package-installed-p p))

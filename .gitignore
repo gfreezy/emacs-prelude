@@ -6,9 +6,7 @@ saveplace
 elpa
 el-get
 semanticdb
-custom.el
 url
-personal/*.el
 *.elc
 anything-c-adaptive-history
 .emacs.desktop
