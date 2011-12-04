@@ -32,9 +32,6 @@
 
 ;;; Code:
 
-(load "haskell-site-file")
-(require 'inf-haskell)
-
 (defun prelude-haskell-mode-hook ()
   (prelude-prog-mode-hook)
   (subword-mode +1)
