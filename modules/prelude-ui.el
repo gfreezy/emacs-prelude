@@ -40,11 +40,11 @@
   (tool-bar-mode -1))
 ;; the menu bar is mostly useless as well
 ;; but removing it under OS X doesn't make much sense
-(unless (eq system-type 'darwin)
-  (menu-bar-mode -1))
+;; (unless (eq system-type 'darwin)
+;;   (menu-bar-mode -1))
 ;; the blinking cursor is nothing, but an annoyance
 (blink-cursor-mode -1)
-
+(scroll-bar-mode -1)
 ;; disable startup screen
 (setq inhibit-startup-screen t)
 
@@ -75,9 +75,15 @@
 (set-locale-environment "UTF-8")
 
 ;; set English and Chinese fonts
-(set-default-font "Inconsolata-12")
+(set-frame-font "Inconsolata-12")
 (set-fontset-font "fontset-default" 'unicode
                   '("LiHei Pro" . "unicode-ttf"))
+
+;; set frame title
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b")) "%*"))
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here
