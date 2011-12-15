@@ -34,7 +34,6 @@
 
 (require 'cl)
 (require 'thingatpt)
-(require 'imenu)
 
 (defun prelude-add-subfolders-to-load-path (parent-dir)
   "Adds all first level `parent-dir' subdirs to the
@@ -107,7 +106,7 @@ the curson at its beginning, according to the current mode."
   (interactive)
   (move-end-of-line nil)
   (open-line 1)
-  (forward-line 1)
+  (next-line 1)
   (indent-according-to-mode))
 
 ;; mimic popular IDEs binding, note that it doesn't work in a terminal session
@@ -117,16 +116,16 @@ the curson at its beginning, according to the current mode."
   "Move up the current line."
   (interactive)
   (transpose-lines 1)
-  (forward-line -2))
+  (previous-line 2))
 
 (global-set-key [(control shift up)] 'prelude-move-line-up)
 
 (defun prelude-move-line-down ()
   "Move down the current line."
   (interactive)
-  (forward-line 1)
+  (next-line 1)
   (transpose-lines 1)
-  (forward-line -1))
+  (previous-line 1))
 
 (global-set-key [(control shift down)] 'prelude-move-line-down)
 
@@ -249,10 +248,6 @@ there's a region, all lines that region covers will be duplicated."
 ;; hook value will repeatedly add it since there's no way to ensure
 ;; that a lambda doesn't already exist in the list.
 
-(defun prelude-local-comment-auto-fill ()
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (auto-fill-mode t))
-
 (defun prelude-turn-on-whitespace ()
   (whitespace-mode +1))
 
@@ -264,25 +259,6 @@ there's a region, all lines that region covers will be duplicated."
 
 (defun prelude-turn-off-abbrev ()
   (abbrev-mode -1))
-
-(defun prelude-add-watchwords ()
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
-          1 font-lock-warning-face t))))
-
-(defun prelude-prog-mode-hook ()
-  "Default coding hook, useful with any programming language."
-  (flyspell-prog-mode)
-  (prelude-local-comment-auto-fill)
-;;  (prelude-turn-on-whitespace)
-  (prelude-turn-on-abbrev)
-  (prelude-add-watchwords)
-  ;; keep the whitespace decent all the time
-  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
-
-;; in Emacs 24 programming major modes generally derive
-;; from a common mode named prog-mode
-(add-hook 'prog-mode-hook 'prelude-prog-mode-hook)
 
 (defun prelude-untabify-buffer ()
   (interactive)
