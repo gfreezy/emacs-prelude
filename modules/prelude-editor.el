@@ -70,20 +70,20 @@
 
 ;; autopair mode to auto close braces
 (require 'autopair)
-(autopair-global-mode)
+;;(autopair-global-mode)
 
-;; Use paredit instead of autopair in lisp-mode
-(add-hook 'lisp-mode-hook
-          #'(lambda () (setq autopair-dont-activate t)))
+;; ;; Use paredit instead of autopair in lisp-mode
+;; (add-hook 'lisp-mode-hook
+;;           #'(lambda () (setq autopair-dont-activate t)))
 
-;; make autopair work with python single and triple quotes
-(add-hook 'python-mode-hook
-          #'(lambda ()
-              (push '(?' . ?')
-                    (getf autopair-extra-pairs :code))
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
+;; ;; make autopair work with python single and triple quotes
+;; (add-hook 'python-mode-hook
+;;           #'(lambda ()
+;;               (push '(?' . ?')
+;;                     (getf autopair-extra-pairs :code))
+;;               (setq autopair-handle-action-fns
+;;                     (list #'autopair-default-handle-action
+;;                           #'autopair-python-triple-quote-action))))
 
 ;; meaningful names for buffers with the same name
 (require 'uniquify)
