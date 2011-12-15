@@ -236,9 +236,10 @@
              '(ac-source-filename
                ac-source-yasnippet
                ac-source-abbrev
-               ac-source-dictionary
+;;               ac-source-dictionary
                ac-source-words-in-buffer
-               ac-source-words-in-same-mode-buffers))
+;;               ac-source-words-in-same-mode-buffers
+               ))
 ;; completion menu is disrupted
 (setq popup-use-optimized-column-computation nil)
 ;; menu height
@@ -247,6 +248,9 @@
 (setq ac-ignore-case 'smart)
 ;; delaying processes of flyspell-mode disables auto completion
 (ac-flyspell-workaround)
+;; bind trigger key to tab
+(setq ac-auto-start nil)
+(ac-set-trigger-key "TAB")
 ;; rebind keys to navigate menu
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
