@@ -176,6 +176,10 @@
 (yas/load-directory (concat prelude-vendor-dir
                             "snippets/yasnippets-haskell"))
 
+;; smart-tab
+(require 'smart-tab)
+(global-smart-tab-mode 1)
+
 ;; projectile is a project management mode
 (require 'projectile)
 (projectile-global-mode t)
@@ -219,33 +223,38 @@
 (global-hungry-delete-mode)
 
 ;; auto-complete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories
-             (concat prelude-vendor-dir "auto-complete/dict"))
-(ac-config-default)
-(set-default 'ac-sources
-             '(ac-source-filename
-               ac-source-yasnippet
-               ac-source-abbrev
-;;               ac-source-dictionary
-               ac-source-words-in-buffer
-;;               ac-source-words-in-same-mode-buffers
-               ))
-;; completion menu is disrupted
-(setq popup-use-optimized-column-computation nil)
-;; menu height
-(setq ac-menu-height 8)
-;; smart case
-(setq ac-ignore-case 'smart)
-;; delaying processes of flyspell-mode disables auto completion
-(ac-flyspell-workaround)
-;; bind trigger key to tab
-(setq ac-auto-start nil)
-(ac-set-trigger-key "TAB")
-;; rebind keys to navigate menu
-(setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories
+;;              (concat prelude-vendor-dir "auto-complete/dict"))
+;; (ac-config-default)
+;; (set-default 'ac-sources
+;;              '(ac-source-filename
+;;                ac-source-yasnippet
+;; ;;               ac-source-abbrev
+;; ;;               ac-source-dictionary
+;;                ac-source-words-in-buffer
+;; ;;               ac-source-words-in-same-mode-buffers
+;;                ))
+;; ;; completion menu is disrupted
+;; (setq popup-use-optimized-column-computation nil)
+;; ;; menu height
+;; (setq ac-menu-height 8)
+;; ;; smart case
+;; (setq ac-ignore-case nil)
+;; ;; tab dwim
+;; (setq ac-dwim-enable t)
+;; ;; delaying processes of flyspell-mode disables auto completion
+;; (ac-flyspell-workaround)
+;; ;; bind trigger key to tab
+;; ;;(setq ac-auto-start nil)
+;; ;;(ac-set-trigger-key "TAB")
+;; ;; stop fuzzy matching
+;; (setq ac-use-fuzzy nil)
+;; ;; rebind keys to navigate menu
+;; (setq ac-use-menu-map t)
+;; (define-key ac-menu-map "\C-n" 'ac-next)
+;; (define-key ac-menu-map "\C-p" 'ac-previous)
+
 
 (provide 'prelude-editor)
 
