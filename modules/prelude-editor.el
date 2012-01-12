@@ -179,8 +179,8 @@
 
 ;; smart-tab
 (require 'smart-tab)
-(global-smart-tab-mode 1)
 (setq smart-tab-using-hippie-expand t)
+(global-smart-tab-mode 1)
 
 ;; projectile is a project management mode
 (require 'projectile)
@@ -224,6 +224,8 @@
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
+;; create new post of octopress in emacs
+(require 'octopress)
 
 (provide 'prelude-editor)
 

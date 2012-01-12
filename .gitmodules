@@ -16,3 +16,6 @@
 [submodule "vendor/smart-tab"]
 	path = vendor/smart-tab
 	url = git://github.com/genehack/smart-tab.git
+[submodule "vendor/octopress-emacs"]
+	path = vendor/octopress-emacs
+	url = git://github.com/gfreezy/octopress-emacs.git
