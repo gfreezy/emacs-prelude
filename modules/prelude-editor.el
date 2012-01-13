@@ -69,6 +69,9 @@
 (electric-indent-mode t)
 (electric-layout-mode t)
 
+;; enable subword-mode that lets you move by camelCase
+(global-subword-mode 1)
+
 ;; autopair mode to auto close braces
 (require 'autopair)
 (autopair-global-mode)
@@ -226,6 +229,10 @@
 
 ;; create new post of octopress in emacs
 (require 'octopress)
+
+;; redo with undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode 1)
 
 (provide 'prelude-editor)
 

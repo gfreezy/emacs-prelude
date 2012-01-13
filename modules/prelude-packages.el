@@ -51,7 +51,7 @@
            haskell-mode inf-ruby markdown-mode paredit projectile
            python sass-mode scss-mode solarized-theme yaml-mode yari zenburn-theme
            yasnippet autopair anything anything-config anything-match-plugin magit
-           full-ack)
+           full-ack undo-tree)
 
   "A list of packages to ensure are installed at launch.")
 
