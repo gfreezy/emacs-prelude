@@ -76,7 +76,7 @@
 (require 'autopair)
 (autopair-global-mode)
 
-;; ;; Use paredit instead of autopair in lisp-mode
+;; Use paredit instead of autopair in lisp-mode
 (add-hook 'lisp-mode-hook
           #'(lambda () (setq autopair-dont-activate t)))
 
@@ -207,7 +207,7 @@
 
 ;; switch buffers with anything
 (global-set-key (kbd "C-x C-c") 'anything-mini)
-(global-set-key (kbd "C-x b") 'anything-buffers+)
+;; (global-set-key (kbd "C-x b") 'anything-buffers+)
 
 ;; search files in current git project
 (require 'anything-git-find-file)
@@ -217,7 +217,7 @@
 (global-set-key (kbd "M-i") 'anything-imenu)
 
 ;; view kill ring with anything
-(global-set-key (kbd "M-y") 'anything-show-kill-ring)
+;; (global-set-key (kbd "M-y") 'anything-show-kill-ring)
 
 ;; zencoding
 (require 'zencoding-mode)
