@@ -124,6 +124,7 @@
 (global-set-key (kbd "C-t") 'set-mark-command)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "<f4>") 'delete-other-windows)
+(global-set-key (kbd "<f3>") 'other-window)
 
 (provide 'prelude-global-keybindings)
 

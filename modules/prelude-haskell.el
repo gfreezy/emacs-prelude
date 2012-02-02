@@ -36,7 +36,7 @@
   (prelude-prog-mode-hook)
   (subword-mode +1)
   (turn-on-haskell-doc-mode)
-  (turn-on-haskell-indentation))
+  (turn-on-haskell-indent))
 
 (add-hook 'haskell-mode-hook 'prelude-haskell-mode-hook)
 
