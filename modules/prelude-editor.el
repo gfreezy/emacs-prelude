@@ -119,7 +119,7 @@
 
 ;; use super + arrow keys to switch between visible buffers
 (require 'windmove)
-(windmove-default-keybindings 'super)
+(windmove-default-keybindings 'meta)
 
 ;; show-paren-mode: subtle highlighting of matching parens
 (show-paren-mode t)
@@ -233,6 +233,11 @@
 ;; redo with undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode 1)
+
+;; emacs key frequency
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
 
 (provide 'prelude-editor)
 

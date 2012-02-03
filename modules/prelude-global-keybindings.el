@@ -89,9 +89,6 @@
 ;; Magit rules
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; cycle through buffers
-(global-set-key (kbd "<C-tab>") 'bury-buffer)
-
 ;; use hippie-expand instead of dabbrev
 (global-set-key (kbd "M-/") 'hippie-expand)
 
@@ -120,10 +117,18 @@
 (global-set-key (kbd "<f12>") 'menu-bar-mode)
 
 ;; auto ident when insert a newline
-(global-set-key (kbd "RET") 'newline-and-indent)
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-t") 'set-mark-command)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+;; window control
+(global-set-key (kbd "C-7") 'delete-other-windows)
 (global-set-key (kbd "<f4>") 'delete-other-windows)
+(global-set-key (kbd "C-8") 'split-window-below)
+(global-set-key (kbd "C-9") 'split-window-right)
+(global-set-key (kbd "C-0") 'delete-window)
+
+(global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "<f3>") 'other-window)
 
 (provide 'prelude-global-keybindings)
