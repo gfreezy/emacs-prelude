@@ -66,8 +66,8 @@
 
 ;; smart indenting and pairing for all
 ;; (electric-pair-mode t)
-(electric-indent-mode t)
-(electric-layout-mode t)
+;; (electric-indent-mode t)
+;; (electric-layout-mode t)
 
 ;; enable subword-mode that lets you move by camelCase
 (global-subword-mode 1)
@@ -202,6 +202,7 @@
 (require 'anything-match-plugin)
 (global-unset-key (kbd "<f10>"))
 (setq anything-command-map-prefix-key "<f10>")
+
 (require 'anything-config)
 (setq anything-c-adaptive-history-length 10000)
 
