@@ -206,15 +206,15 @@
 (setq anything-c-adaptive-history-length 10000)
 
 ;; switch buffers with anything
-(global-set-key (kbd "C-x C-c") 'anything-mini)
+(global-set-key (kbd "C-x C-c") 'anything-for-files)
 ;; (global-set-key (kbd "C-x b") 'anything-buffers+)
+
+;; anything-imenu to find symbols
+(global-set-key (kbd "M-i") 'anything-imenu)
 
 ;; search files in current git project
 (require 'anything-git-find-file)
 (global-set-key (kbd "C-x f") 'anything-git-find-file)
-
-;; anything-imenu to find symbols
-(global-set-key (kbd "M-i") 'anything-imenu)
 
 ;; view kill ring with anything
 ;; (global-set-key (kbd "M-y") 'anything-show-kill-ring)

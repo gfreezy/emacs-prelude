@@ -129,10 +129,9 @@
 (global-set-key (kbd "<f4>") 'delete-other-windows)
 (global-set-key (kbd "C-8") 'split-window-below)
 (global-set-key (kbd "C-9") 'split-window-right)
-(global-set-key (kbd "C-0") 'delete-window)
+(global-set-key (kbd "c-0") 'delete-window)
 
-(global-set-key (kbd "C-<tab>") 'other-window)
-(global-set-key (kbd "<f3>") 'other-window)
+(global-set-key (kbd "C-o") 'other-window)
 
 (provide 'prelude-global-keybindings)
 

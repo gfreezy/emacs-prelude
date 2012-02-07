@@ -75,7 +75,7 @@
 (set-locale-environment "UTF-8")
 
 ;; set English and Chinese fonts
-(set-frame-font "Inconsolata-12")
+(set-frame-font "Ubuntu Mono-12")
 (set-fontset-font "fontset-default" 'unicode
                   '("LiHei Pro" . "unicode-ttf"))
 
