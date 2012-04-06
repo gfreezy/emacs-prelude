@@ -9,3 +9,5 @@ el-get
 semanticdb
 url
 ede-projects.el
+*.elc
+abbrev_defs
