@@ -89,7 +89,7 @@
 (add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 
 ;; use zenburn as the default theme
-(load-theme 'zenburn t)
+;; (load-theme 'zenburn t)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here

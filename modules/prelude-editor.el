@@ -202,9 +202,9 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; load yasnippet
-(require 'yasnippet)
-(setq yas/snippet-dirs prelude-snippets-dir prelude-personal-snippets-dir)
-(yas/global-mode 1)
+;; (require 'yasnippet)
+;; (setq yas/snippet-dirs prelude-snippets-dir prelude-personal-snippets-dir)
+;; (yas/global-mode 1)
 
 ;; Helm makes finding stuff in Emacs much simpler
 (require 'helm-config)
